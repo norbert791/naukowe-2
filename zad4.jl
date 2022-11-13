@@ -31,12 +31,13 @@ p(x) = (x - 20)*(x - 19)*(x - 18)*(x - 17)*(x - 16) *
 
 function main()
   #Original coefficients
-  wilkilson = Polynomials.ImmutablePolynomial(wilk_coef)
+  wilkilson = Polynomials.Polynomial(reverse(wilk_coef))
   println("Roots of wilkilson")
   wilkilson_roots = Polynomials.roots(wilkilson)
   println(wilkilson_roots)
   println("------------------")
-  println("|P(z_k)|,|p(z_k)|,|z_k-k|")
+  println("P(z),p(z),z-k")
+
   for k in 1:20
     P_k :: Float64 = abs(wilkilson(wilkilson_roots[k]))
     p_k :: Float64 = abs(p(wilkilson_roots[k]))
@@ -46,21 +47,19 @@ function main()
 
   println("")
   #Distorted coefficients
-  wilkilson = Polynomials.ImmutablePolynomial(wilk_coef_distorted)
+  wilkilson = Polynomials.ImmutablePolynomial(reverse(wilk_coef_distorted))
   println("Roots of wilkilson (distorted)")
   wilkilson_roots = Polynomials.roots(wilkilson)
   println(wilkilson_roots)
   println("------------------")
-  println("|P(z_k)|,|p(z_k)|,|z_k-k|")
+  println("P(z),p(z),z-k")
+
   for k in 1:20
     P_k :: Float64 = abs(wilkilson(wilkilson_roots[k]))
     p_k :: Float64 = abs(p(wilkilson_roots[k]))
     z :: Float64 = abs(wilkilson_roots[k] - k)
-    print("$(P_k),$(p_k),$(z)")
-    if (k < 20)
-      print(",")
-    end
-    print("\n")
+    print("$(P_k),$(p_k),$(z)\n")
+
   end
 
 end
