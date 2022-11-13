@@ -41,11 +41,7 @@ function main()
     P_k :: Float64 = abs(wilkilson(wilkilson_roots[k]))
     p_k :: Float64 = abs(p(wilkilson_roots[k]))
     z :: Float64 = abs(wilkilson_roots[k] - k)
-    print("$(P_k),$(p_k),$(z)")
-    if (k < 20)
-      print(",")
-    end
-    print("\n")
+    print("$(P_k),$(p_k),$(z)\n")
   end
 
   println("")

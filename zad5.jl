@@ -42,7 +42,7 @@ function main()
   fun_trun32 = generate_truncated_population_sequence(r, p_0)
 
   n :: Unsigned = 5
-  println("Float32,Float32_truncated,Float64")
+  println("Float32,Float32 truncated,Float64")
   println("$(fun32(number_of_iterations)),$(fun_trun32(number_of_iterations)),$(fun64(number_of_iterations))")
 
 end
